@@ -22,5 +22,5 @@ end
 
 
 module Make (Key : OrderedType) : S with type key = Key.t
-module Make2 (Perm : S) : S1 with type key = Perm.key 
+module Make1 (Perm : S) : S1 with type key = Perm.key 
 

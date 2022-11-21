@@ -58,7 +58,7 @@ module Make (Key : OrderedType) = struct
         MapT.bindings p1.f;;  
 end
 
-module Make2 (Perm : S) = struct
+module Make1 (Perm : S) = struct
     include Perm
 
     module SetP = Set.Make(Perm)
@@ -67,7 +67,7 @@ module Make2 (Perm : S) = struct
         let rec saturate sn = 
             let s1 = SetP.fold (fun perm set -> SetP.add perm (SetP.add (invert perm) set)) sn SetP.empty 
             and s2 = SetP.fold 
-                    (fun perm1 set -> SetP.fold (fun perm2 set -> SetP.add (compose perm1 perm2) set) sn SetP.empty) 
+                    (fun perm1 set -> SetP.union set (SetP.fold (fun perm2 set -> SetP.add (compose perm1 perm2) set) sn SetP.empty)) 
                     sn 
                     SetP.empty 
             in

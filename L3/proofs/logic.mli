@@ -18,13 +18,11 @@ val consequence : theorem -> formula
 val pp_print_theorem : Format.formatter -> theorem -> unit
 
 (** by_assumption f konstruuje następujący dowód
-
   -------(Ax)
   {f} ⊢ f  *)
 val by_assumption : formula -> theorem
 
 (** imp_i f thm konstruuje następujący dowód
-
        thm
       Γ ⊢ φ
  ---------------(→I)
@@ -32,7 +30,6 @@ val by_assumption : formula -> theorem
 val imp_i : formula -> theorem -> theorem
 
 (** imp_e thm1 thm2 konstruuje następujący dowód
-
     thm1      thm2
  Γ ⊢ φ → ψ    Δ ⊢ φ 
  ------------------(→E)
@@ -40,7 +37,6 @@ val imp_i : formula -> theorem -> theorem
 val imp_e : theorem -> theorem -> theorem
 
 (** bot_e f thm konstruuje następujący dowód
-
    thm
   Γ ⊢ ⊥
   -----(⊥E)
